@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Wed Dec 04 09:50:23 GMT+08:00 2019
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=editor-toolkit_fat.jar
+manifest.mergeall=true
+manifest.mainclass=com.vec2.editor.tool.fontthin.FontThin
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=

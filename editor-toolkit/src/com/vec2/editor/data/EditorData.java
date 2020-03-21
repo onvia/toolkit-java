@@ -9,7 +9,7 @@ import com.keyroy.util.json.Json;
 import com.vec2.editor.utils.FileUtils;
 
 public class EditorData {
-
+	private String [] file_types = {"txt","java","ini","py","md","ts","js","cs","json","plist","fnt","prefab","fire","h","cpp"};
 	public static FontThinData fontThinData = new FontThinData();
 	
 	public static void saveFontThinData() {
@@ -19,6 +19,11 @@ public class EditorData {
 	public static void save() {
 		save(new EditorData());
 	}
+	
+	public String [] getFileTypes() {
+		return file_types;
+	}
+	
 	
 	public static void save(Object object) {
 		String filename = object.getClass().getSimpleName();

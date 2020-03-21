@@ -126,7 +126,19 @@ public class FontThin extends ToolAdapter{
 		mexport_TextField.setText(EditorData.fontThinData.getExportPath());
 		splitPane.setLeftComponent(file_tree);
 		splitPane.setRightComponent(dragPanel);
+		
+		// 文件类型 文本
+		Label ignore_types = new Label("text.ignore_type");
+		JTextField nFileType_textField = new JTextField();
+		nFileType_textField.setText(Language.get("text.unrealized"));
+		
+		
 		panel.add(splitPane);
+
+		panel.add(ignore_types);
+		panel.add(nFileType_textField);
+		
+		
 		panel.add(file_txt);
 	    panel.add(mexport_TextField);
 	    panel.add(select_exports_btn);
@@ -146,9 +158,23 @@ public class FontThin extends ToolAdapter{
 	    dropPanelCons.setX(Spring.constant(distance));
 	    dropPanelCons.setY(Spring.constant(distance));
 	    
+	    // 文件类型
+	    SpringLayout.Constraints file_typeCons = springLayout.getConstraints(ignore_types);
+	    file_typeCons.setX(Spring.constant(distance));
+	    file_typeCons.setY(Spring.sum(dropPanelCons.getConstraint(SpringLayout.SOUTH),Spring.constant(distance)));
+	    
+
+	    //txt地址栏约束
+	    SpringLayout.Constraints ignoreFieldCons = springLayout.getConstraints(nFileType_textField);
+	    ignoreFieldCons.setX(Spring.sum(file_typeCons.getConstraint(SpringLayout.EAST),Spring.constant(distance)));
+	    ignoreFieldCons.setY(file_typeCons.getY());
+	    ignoreFieldCons.setHeight(Spring.constant(21));
+	    
+	    
+	    // 导出目录 文本
 	    SpringLayout.Constraints file_txtCons = springLayout.getConstraints(file_txt);
 	    file_txtCons.setX(Spring.constant(distance));
-	    file_txtCons.setY(Spring.sum(dropPanelCons.getConstraint(SpringLayout.SOUTH),Spring.constant(distance)));
+	    file_txtCons.setY(Spring.sum(file_typeCons.getConstraint(SpringLayout.SOUTH),Spring.constant(distance)));
 	    
 	    //txt地址栏约束
 	    SpringLayout.Constraints exportsFieldCons = springLayout.getConstraints(mexport_TextField);
@@ -171,6 +197,8 @@ public class FontThin extends ToolAdapter{
 	    panelCons.setConstraint(SpringLayout.EAST, Spring.sum(dropPanelCons.getConstraint(SpringLayout.EAST), Spring.constant(distance)));	    
 	    panelCons.setConstraint(SpringLayout.SOUTH, Spring.sum(file_txtCons.getConstraint(SpringLayout.SOUTH), Spring.constant(distance)));
 	    
+	    
+	    ignoreFieldCons.setConstraint(SpringLayout.EAST, Spring.sum(panelCons.getConstraint(SpringLayout.EAST), Spring.constant(-distance)));
 	    disposeBtnCons.setConstraint(SpringLayout.EAST, Spring.sum(panelCons.getConstraint(SpringLayout.EAST), Spring.constant(-distance)));
 	    select_exports_btn_Cons.setConstraint(SpringLayout.EAST, Spring.sum(disposeBtnCons.getConstraint(SpringLayout.WEST), Spring.constant(-distance)));
 	    exportsFieldCons.setConstraint(SpringLayout.EAST, Spring.sum(select_exports_btn_Cons.getConstraint(SpringLayout.WEST), Spring.constant(-distance)));
@@ -183,6 +211,7 @@ public class FontThin extends ToolAdapter{
 			@Override
 			public void onDropIn(List<File> files) {
 				super.onDropIn(files);
+				System.out.println("onDropIn file");
 				fileTree.onDropIn(files);
 			}
 		});

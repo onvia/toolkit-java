@@ -63,6 +63,7 @@ public class ZN {
 		public static final String file_ttf = "字体文件";
 		public static final String file_txt = "文本文件";
 		public static final String preview = "预览";
+		public static final String file_type = "文件类型";
 		
 		
 		//
@@ -117,6 +118,8 @@ public class ZN {
 		public static final String dispose = "处理";
 		public static final String select = "选择";
 		public static final String only_preview_txt = "只能预览文本文件";
+		public static final String ignore_type = "忽略样式";
+		public static final String unrealized = "未实现";
 		
 		//
 		public static final String help = "使用帮助" + "\n导入PSD文件的方法 " + "\n拖拽PSD文件 或者 文件夹 , 到  [PSD文件列表] (左上)面板"
@@ -139,3 +142,4 @@ public class ZN {
 		}
 	}
 }
+

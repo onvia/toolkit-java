@@ -1,0 +1,12 @@
+.\test\json\achieve.json
+.\test\json\chiplv.json
+.\test\json\compound.json
+.\test\json\facility.json
+.\test\json\food.json
+.\test\json\guide.json
+.\test\json\language.json
+.\test\json\level.json
+.\test\json\mainconfig.json
+D:\tmp\test\json2\page.json
+D:\tmp\test\json2\prop.json
+D:\tmp\test\json2\role.json

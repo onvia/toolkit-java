@@ -14,7 +14,6 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Tree;
 import com.vec2.editor.data.EditorData;
 import com.vec2.editor.utils.FileUtils;
 import com.vec2.editor.utils.Language;
@@ -58,7 +57,7 @@ public class FontThinTxtFileTree  extends JPanel {
 						public void run() {
 							String fileContent = FileUtils.read(new File(filepath));
 							if(fileContent != null) {
-								System.out.println(fileContent);	
+								System.out.println("内容：\n"+fileContent);	
 								if(fileContent == "" || fileContent == null || fileContent.equals("")) {
 									fileContent = "[nothing]";
 								}
@@ -104,9 +103,25 @@ public class FontThinTxtFileTree  extends JPanel {
 		}
 	}
 	
+	private boolean ignoreFile(File file) {
+		if(file == null)return false;
+
+		String [] files = {"o","libs"};
+		String name = file.getName();
+		String [] fullname = name.split("\\.");
+		if(fullname.length > 1) {
+			String ext = fullname[fullname.length - 1];
+			for (String string : files) {
+				if(ext.equalsIgnoreCase(string)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	private boolean verifyTXT(File file) {
 		if(file == null)return false;
-		String [] files = {"txt","java","ini","py","md","js","cs"};
+		String [] files = {"txt","java","ini","py","md","ts","js","cs","json","plist","fnt","prefab","fire","h","cpp"};
 		String name = file.getName();
 		String [] fullname = name.split("\\.");
 		if(fullname.length > 1) {
